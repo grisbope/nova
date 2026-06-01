@@ -7,7 +7,8 @@
     { "source": "/stt/", "destination": "/api/stt" },
     { "source": "/tts", "destination": "/api/tts" },
     { "source": "/tts/", "destination": "/api/tts" },
-    { "source": "/openclaw/:path*", "destination": "/api/openclaw/:path*" },
+    { "source": "/openclaw/:path*", "destination": "/api/openclaw?path=:path*" },
+    { "source": "/openclaw", "destination": "/api/openclaw" },
     { "source": "/((?!assets/|vad/|api/).*)", "destination": "/index.html" }
   ]
 }
