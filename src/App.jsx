@@ -82,11 +82,13 @@ export default function App() {
     });
     ttsRef.current = tts;
     try {
+      let gotText = false;
       await streamReply(clean, {
         signal: ctrl.signal,
-        onDelta: (delta) => tts.push(delta),
+        onDelta: (delta) => { gotText = true; tts.push(delta); },
         onDone: () => tts.end(),
       });
+      if (!gotText) throw new Error('Sin respuesta del asistente');
     } catch (e) {
       if (e.name === 'AbortError') return;
       console.error(e);

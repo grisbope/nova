@@ -33,7 +33,7 @@ Nova es una interfaz **solo voz**: sin chat, sin teclado, sin ruido visual. El o
 - **Web Speech API** + **VAD** (Silero ONNX en el cliente)
 - **OpenClaw** como backend conversacional (SSE streaming)
 - **OpenAI** para STT/TTS (configurable)
-- **Docker + nginx** para producción con proxy seguro a OpenClaw
+- **Docker + nginx** para producción con proxy seguro a OpenClaw, STT y TTS
 
 ---
 
@@ -73,7 +73,7 @@ Copia `.env.example` → `.env` y ajusta:
 | `VITE_LANG` | Locale de voz (`es-ES`) |
 | `VITE_OPENAI_*` | Modelos de STT/TTS de OpenAI |
 
-> En Docker, nginx inyecta la autenticación hacia OpenClaw. En Vercel o dev directo, configura `VITE_OPENCLAW_URL` y `VITE_OPENCLAW_KEY` apuntando a tu gateway.
+> En Docker, nginx inyecta la autenticación hacia OpenClaw y expone `/stt/` y `/tts/` como proxy same-origin hacia OpenAI. En Vercel o dev directo, configura `VITE_OPENCLAW_URL` y `VITE_OPENCLAW_KEY` apuntando a tu gateway.
 
 ---
 
@@ -93,8 +93,9 @@ El `vercel.json` incluido enruta la SPA y sirve los assets de VAD.
 ```bash
 docker build -t nova .
 docker run -p 8080:80 \
-  -e OPENCLAW_UPSTREAM=https://tu-openclaw.example \
+  -e OPENCLAW_UPSTREAM=http://openclaw:18789 \
   -e OPENCLAW_KEY=tu-clave \
+  -e OPENAI_API_KEY=tu-clave-openai \
   nova
 ```
 
