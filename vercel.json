@@ -3,6 +3,11 @@
   "outputDirectory": "dist",
   "framework": "vite",
   "rewrites": [
-    { "source": "/((?!assets/|vad/).*)", "destination": "/index.html" }
+    { "source": "/stt", "destination": "/api/stt" },
+    { "source": "/stt/", "destination": "/api/stt" },
+    { "source": "/tts", "destination": "/api/tts" },
+    { "source": "/tts/", "destination": "/api/tts" },
+    { "source": "/openclaw/:path*", "destination": "/api/openclaw/:path*" },
+    { "source": "/((?!assets/|vad/|api/).*)", "destination": "/index.html" }
   ]
 }
