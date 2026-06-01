@@ -1,6 +1,10 @@
 # Nova
 
-Asistente de voz en el navegador. Un orbe minimalista, wake word, respuestas en streaming y TTS natural. Pensado para pantallas táctiles, kioscos y despliegues web como [nex.grisbope.com](https://nex.grisbope.com).
+<p align="center">
+  <img src="public/novaicon.png" alt="Nova" width="120" />
+</p>
+
+Asistente de voz en el navegador. Un orbe minimalista, wake word, respuestas en streaming y TTS natural. Pensado para pantallas táctiles, kioscos y despliegues web como [nova.grisbope.com](https://nova.grisbope.com).
 
 <img width="1385" height="776" alt="image" src="https://github.com/user-attachments/assets/7afda574-d956-4c7e-ab68-17e279ce787b" />
 
